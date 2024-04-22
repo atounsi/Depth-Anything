@@ -73,7 +73,7 @@ def evaluate(model, test_loader, config, round_vals=True, round_precision=3):
             if not sample['has_valid_depth']:
                 continue
         image, depth = sample['image'], sample['depth']
-        image, depth = image.cuda(), depth.cuda()
+        image, depth = image.to("mps"), depth.to("mps")
         depth = depth.squeeze().unsqueeze(0).unsqueeze(0)
         focal = sample.get('focal', torch.Tensor(
             [715.0873]).cuda())  # This magic number (focal) is only used for evaluating BTS model
@@ -111,7 +111,7 @@ def evaluate(model, test_loader, config, round_vals=True, round_precision=3):
 def main(config):
     model = build_model(config)
     test_loader = DepthDataLoader(config, 'online_eval').data
-    model = model.cuda()
+    model = model.to("mps")
     metrics = evaluate(model, test_loader, config)
     print(f"{colors.fg.green}")
     print(metrics)
