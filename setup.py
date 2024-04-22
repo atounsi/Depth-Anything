@@ -22,7 +22,6 @@ requirements, extra_indices = get_requirements()
 setup(
     name="depth_anything",
     version="1.0",
-    install_requires=[],
     packages=find_packages(exclude=["metric_depth", "depth_vis", "checkpoints", "assets", ]),
     install_requires=requirements,
     dependency_links=extra_indices
