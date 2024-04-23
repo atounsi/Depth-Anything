@@ -20,7 +20,7 @@ def get_requirements(path: str = HERE / "requirements.txt") -> Tuple[List[str], 
 requirements, extra_indices = get_requirements()
 
 setup(
-    name="depth_anything",
+    name="depth-anything",
     version="1.0",
     packages=find_packages(exclude=["metric_depth", "depth_vis", "checkpoints", "assets", ]),
     install_requires=requirements,
