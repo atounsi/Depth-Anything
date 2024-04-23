@@ -16,13 +16,16 @@ def get_requirements(path: str = HERE / "requirements.txt") -> Tuple[List[str], 
             requirements.append(line)
     return requirements, extra_indices
 
-
 requirements, extra_indices = get_requirements()
 
+packages = find_packages(exclude=["depth_vis", "checkpoints", "assets"])
+
 setup(
-    name="depth-anything",
+    name="depth_anything",
     version="1.0",
-    packages=find_packages(exclude=["metric_depth", "depth_vis", "checkpoints", "assets", ]),
-    install_requires=requirements,
-    dependency_links=extra_indices
+    install_requires=[],
+    packages=packages,
+    extras_require={
+        "all": requirements    
+    }
 )
