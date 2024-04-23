@@ -144,7 +144,11 @@ class DPT_DINOv2(nn.Module):
         
         # in case the Internet connection is not stable, please load the DINOv2 locally
         if localhub:
-            self.pretrained = torch.hub.load('torchhub/facebookresearch_dinov2_main', 'dinov2_{:}14'.format(encoder), source='local', pretrained=False)
+            # get of library tochhub.facebookresearch_dinov2_main
+            import os
+            libraries_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+            module_path = os.path.join(os.path.join(libraries_path, 'torchhub'), 'facebookresearch_dinov2_main')
+            self.pretrained = torch.hub.load(module_path, 'dinov2_{:}14'.format(encoder), source='local', pretrained=False)
         else:
             self.pretrained = torch.hub.load('facebookresearch/dinov2', 'dinov2_{:}14'.format(encoder))
         
