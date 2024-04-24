@@ -23,9 +23,6 @@ packages = find_packages(exclude=["depth_vis", "checkpoints", "assets"])
 setup(
     name="depth-anything",
     version="1.0",
-    install_requires=[],
-    packages=packages,
-    extras_require={
-        "all": requirements    
-    }
+    install_requires=requirements,
+    packages=packages
 )
