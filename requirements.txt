@@ -1,6 +1,6 @@
 gradio_imageslider==0.0.18
 gradio==4.14.0
-torch==2.3.0
-torchvision==0.18.0
+torch==2.2.0
+torchvision==0.17.0
 opencv-python==4.8.0.74
 huggingface_hub==0.22.2
